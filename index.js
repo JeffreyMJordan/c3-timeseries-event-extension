@@ -23,15 +23,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let currentRec;
   let startX; 
+  let currentGraphic;
 
   function ended(){
-    console.log("ended");
+    currentGraphic.on("click", () => {
+      currentGraphic.append("text").text("test").attr("x", currentRec.attr("x")).attr("y", 40);
+    });
   }
 
   function clicked(){
     let height = document.getElementsByClassName("c3-axis-x")[0].getBoundingClientRect().y - 5;
+    currentGraphic = svg.append("g");
     startX = d3.event.x;
-    currentRec = svg.append("rect")
+    currentRec = currentGraphic.append("rect")
       .attr("y", 0)
       .attr("x", d3.event.x)
       .attr("height", height)
