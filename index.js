@@ -21,16 +21,24 @@ document.addEventListener("DOMContentLoaded", () => {
     .on("drag", dragged)
     .on("end", ended));
 
+  let currentRec;
+  let startX; 
 
   function ended(){
     console.log("ended");
   }
 
   function clicked(){
-    console.log("clicked");
+    startX = d3.event.x;
+    currentRec = svg.append("rect")
+      .attr("y", 0)
+      .attr("x", d3.event.x)
+      .attr("height", 100)
+      .attr("fill", "transparent")
+      .attr("stroke", "black");
   }
 
   function dragged(){
-    console.log("dragged");
+    currentRec.attr("width", d3.event.x - startX);
   }
 });
