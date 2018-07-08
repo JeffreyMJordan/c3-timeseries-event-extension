@@ -1,7 +1,5 @@
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log(c3);
-  console.log(d3);
   let chart = c3.generate({
     bindto: "#graph",
     data: {
@@ -11,4 +9,28 @@ document.addEventListener("DOMContentLoaded", () => {
       ]
     }
   });
+  let svg = d3.select("#graph");
+  svg
+    .append("rect")
+    .attr("width", window.innerWidth)
+    .attr("height", window.innerHeight)
+    .attr("fill", "transparent")
+    .style("pointer-events", "all")
+    .call(d3.drag()
+    .on("start", clicked)
+    .on("drag", dragged)
+    .on("end", ended));
+
+
+  function ended(){
+    console.log("ended");
+  }
+
+  function clicked(){
+    console.log("clicked");
+  }
+
+  function dragged(){
+    console.log("dragged");
+  }
 });
