@@ -29,11 +29,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function clicked(){
+    let height = document.getElementsByClassName("c3-axis-x")[0].getBoundingClientRect().y - 5;
     startX = d3.event.x;
     currentRec = svg.append("rect")
       .attr("y", 0)
       .attr("x", d3.event.x)
-      .attr("height", 100)
+      .attr("height", height)
       .attr("fill", "transparent")
       .attr("stroke", "black");
   }
