@@ -29,7 +29,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let rec = currentRec;
     let graphic = currentGraphic;
     currentGraphic.on("click", () => {
-      graphic.append("text").text("test").attr("x", rec.attr("x")).attr("y", 40);
+      let text = window.prompt("test", "undefined");
+      graphic.selectAll("text").data([]).exit().remove();
+      graphic.append("text").text(text).attr("x", rec.attr("x")).attr("y", 40);
     });
   }
 
