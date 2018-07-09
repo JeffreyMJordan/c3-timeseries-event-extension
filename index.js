@@ -26,8 +26,10 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentGraphic;
 
   function ended(){
+    let rec = currentRec;
+    let graphic = currentGraphic;
     currentGraphic.on("click", () => {
-      currentGraphic.append("text").text("test").attr("x", currentRec.attr("x")).attr("y", 40);
+      graphic.append("text").text("test").attr("x", rec.attr("x")).attr("y", 40);
     });
   }
 
